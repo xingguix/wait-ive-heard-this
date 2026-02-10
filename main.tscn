@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bl8decfsbhyw"]
+
+[ext_resource type="Script" uid="uid://juvwnl8ucm6e" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Control" type="Control" unique_id=661203023]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1721560143]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1494681420]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.98039216, 0.9764706, 0.9647059, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=938291940]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 386.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1910254666]
+layout_mode = 2
+alignment = 1
+
+[node name="啊?" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=634512641]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "啊？ "
+
+[node name="我还听过这个?" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=765756979]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "我还听过这个?"
+
+[node name="在歌曲中" type="Label" parent="VBoxContainer" unique_id=2129481661]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 32
+text = "在歌曲中发现你学过的单词"
+horizontal_alignment = 1
+vertical_alignment = 1
