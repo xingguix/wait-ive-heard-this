@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.98039216, 0.9764706, 0.9647059, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=938291940]
+[node name="TitleVBox" type="VBoxContainer" parent="." unique_id=938291940]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -30,26 +30,53 @@ offset_bottom = 386.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1910254666]
+[node name="TitleHBox" type="HBoxContainer" parent="TitleVBox" unique_id=1910254666]
 layout_mode = 2
 alignment = 1
 
-[node name="啊?" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=634512641]
+[node name="啊" type="Label" parent="TitleVBox/TitleHBox" unique_id=634512641]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
-text = "啊？ "
+text = "啊"
 
-[node name="我还听过这个?" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=765756979]
+[node name="问号Red" type="Label" parent="TitleVBox/TitleHBox" unique_id=1333914937]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "？ "
+
+[node name="我还" type="Label" parent="TitleVBox/TitleHBox" unique_id=765756979]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
-text = "我还听过这个?"
+text = "我还"
 
-[node name="在歌曲中" type="Label" parent="VBoxContainer" unique_id=2129481661]
+[node name="听过" type="Label" parent="TitleVBox/TitleHBox" unique_id=1854720514]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "听过"
+
+[node name="这个" type="Label" parent="TitleVBox/TitleHBox" unique_id=91641805]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "这个"
+
+[node name="问号Black" type="Label" parent="TitleVBox/TitleHBox" unique_id=1758104425]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "？"
+
+[node name="在歌曲中" type="Label" parent="TitleVBox" unique_id=2129481661]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 32
 text = "在歌曲中发现你学过的单词"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TitleAnimationPlayer" type="AnimationPlayer" parent="TitleVBox" unique_id=1030774672]
+root_node = NodePath("../..")
