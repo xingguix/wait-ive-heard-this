@@ -79,57 +79,78 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_lquwl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lquwl")
 metadata/_edit_lock_ = true
 
-[node name="TitleVBox" type="VBoxContainer" parent="." unique_id=938291940]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2064366345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1398075887]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Placeholder" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1443505082]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="TitleAndSearchBox" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=2017928970]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+
+[node name="TitleVBox" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox" unique_id=938291940]
 layout_mode = 0
-offset_top = 100.0
+offset_top = 8.0
 offset_right = 1600.0
-offset_bottom = 295.0
+offset_bottom = 203.0
 alignment = 1
 script = ExtResource("2_h2yge")
 
-[node name="TitleHBox" type="HBoxContainer" parent="TitleVBox" unique_id=1910254666]
+[node name="TitleHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox" unique_id=1910254666]
 layout_mode = 2
 alignment = 1
 script = ExtResource("2_0xm2m")
 
-[node name="啊" type="Label" parent="TitleVBox/TitleHBox" unique_id=634512641]
+[node name="啊" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=634512641]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "啊"
 script = ExtResource("4_1bvp3")
 
-[node name="问号Red" type="Label" parent="TitleVBox/TitleHBox" unique_id=1333914937]
+[node name="问号Red" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=1333914937]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 106
 text = "？ "
 
-[node name="我还" type="Label" parent="TitleVBox/TitleHBox" unique_id=765756979]
+[node name="我还" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=765756979]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "我还"
 
-[node name="听过" type="Label" parent="TitleVBox/TitleHBox" unique_id=1854720514]
+[node name="听过" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=1854720514]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "听过"
 
-[node name="这个" type="Label" parent="TitleVBox/TitleHBox" unique_id=91641805]
+[node name="这个" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=91641805]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "这个"
 
-[node name="问号Black" type="Label" parent="TitleVBox/TitleHBox" unique_id=1758104425]
+[node name="问号Black" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=1758104425]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "？"
 
-[node name="在歌曲中" type="Label" parent="TitleVBox" unique_id=2129481661]
+[node name="在歌曲中" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox" unique_id=2129481661]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 32
@@ -137,16 +158,16 @@ text = "在歌曲中发现你学过的单词"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SearchBox" type="LineEdit" parent="." unique_id=572458865]
+[node name="SearchBox" type="LineEdit" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox" unique_id=572458865]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 237.0
-offset_top = -53.0
+offset_top = 98.0
 offset_right = -237.0
-offset_bottom = 69.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -154,10 +175,9 @@ theme_override_colors/caret_color = Color(0.14406246, 0.14406252, 0.14406297, 1)
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_1bvp3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1bvp3")
-text = "hello"
 script = ExtResource("5_7mycd")
 
-[node name="TextureRect" type="TextureRect" parent="SearchBox" unique_id=1162499073]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" unique_id=1162499073]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -170,7 +190,7 @@ texture = ExtResource("5_lquwl")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="SearchBox" unique_id=1062035100]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" unique_id=1062035100]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -188,5 +208,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
 text = "搜索"
 
-[connection signal="text_submitted" from="SearchBox" to="SearchBox" method="_on_text_submitted"]
-[connection signal="pressed" from="SearchBox/Button" to="SearchBox" method="_on_button_pressed"]
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_text_submitted"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/Button" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_button_pressed"]
