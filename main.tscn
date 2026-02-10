@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://b03tvs7f1n4v0" path="res://scripts/啊.gd" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dt4ko40owkmrv" path="res://scripts/search_box.gd" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://cpk7ld8uah2ka" path="res://scripts/search_control.gd" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dt2lm3xacdb1m" path="res://resources/加载.svg" id="7_272bh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lquwl"]
 
@@ -158,7 +160,7 @@ text = "在歌曲中发现你学过的单词"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SearchBox" type="LineEdit" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox" unique_id=572458865]
+[node name="SearchBox" type="LineEdit" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox" unique_id=572458865 node_paths=PackedStringArray("audio_player")]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -176,6 +178,7 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_1bvp3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1bvp3")
 script = ExtResource("5_7mycd")
+audio_player = NodePath("../../../../AudioStreamPlayer")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" unique_id=1162499073]
 layout_mode = 1
@@ -190,16 +193,34 @@ texture = ExtResource("5_lquwl")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" unique_id=1062035100]
+[node name="SearchControl" type="Control" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" unique_id=143157840]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -170.85248
+offset_left = -347.0
 offset_top = 14.0
-offset_right = -22.147583
+offset_right = -22.0
 offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("7_5vw27")
+
+[node name="Loading" type="TextureRect" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl" unique_id=1820402162]
+layout_mode = 0
+offset_left = 206.0
+offset_right = 300.0
+offset_bottom = 94.0
+texture = ExtResource("7_272bh")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl" unique_id=1062035100]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 0
+offset_left = 185.0
+offset_right = 325.0
+offset_bottom = 94.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
@@ -209,4 +230,4 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
 text = "搜索"
 
 [connection signal="text_submitted" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_text_submitted"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/Button" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl/Button" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_button_pressed"]
