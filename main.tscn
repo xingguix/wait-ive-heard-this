@@ -103,10 +103,14 @@ custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
 [node name="TitleVBox" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox" unique_id=938291940]
-layout_mode = 0
-offset_top = 8.0
-offset_right = 1600.0
-offset_bottom = 203.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -800.0
+offset_right = 800.0
+offset_bottom = 195.0
+grow_horizontal = 2
 alignment = 1
 script = ExtResource("2_h2yge")
 
@@ -228,6 +232,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7mycd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
 text = "搜索"
+
+[node name="CardControl" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1617772259]
+layout_mode = 2
+
+[node name="CardVBox" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=293559114]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -541.0
+offset_right = 541.0
+offset_bottom = 202.0
+grow_horizontal = 2
 
 [connection signal="text_submitted" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_text_submitted"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl/Button" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_button_pressed"]
