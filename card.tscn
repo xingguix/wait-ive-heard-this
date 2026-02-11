@@ -26,13 +26,13 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [node name="Card" type="Panel" unique_id=151077206]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 250)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -293.0
 offset_right = 293.0
-offset_bottom = 149.0
+offset_bottom = 250.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rjlel")
 script = ExtResource("1_kikvd")
@@ -45,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_rjlel")
-separator_array = Array[float]([57.0])
+separator_array = Array[float]([114.0])
 line_height = 1.5
 artist_box = NodePath("../VBoxContainer/Artist")
 entire_box = NodePath("../VBoxContainer")
@@ -67,15 +67,15 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Control" type="Control" parent="VBoxContainer/SongName" unique_id=1539974902]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/SongName/Control" unique_id=1493621220]
 self_modulate = Color(1, 1, 1, 0.59607846)
 layout_mode = 0
-offset_top = 5.0
-offset_right = 23.0
-offset_bottom = 20.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 45.0
 texture = ExtResource("3_q5obu")
 expand_mode = 3
 stretch_mode = 5
@@ -83,35 +83,36 @@ stretch_mode = 5
 [node name="Song" type="Label" parent="VBoxContainer/SongName" unique_id=1862060507]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
 text = "Love Story"
 
 [node name="Artist" type="HBoxContainer" parent="VBoxContainer" unique_id=607366473]
 layout_mode = 2
 
 [node name="Control" type="Control" parent="VBoxContainer/Artist" unique_id=1210124649]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Artist/Control" unique_id=984476392]
 self_modulate = Color(1, 1, 1, 0.5529412)
 layout_mode = 0
 offset_top = -1.0
-offset_right = 23.0
-offset_bottom = 18.0
+offset_right = 40.0
+offset_bottom = 39.0
 texture = ExtResource("4_e484p")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Song" type="Label" parent="VBoxContainer/Artist" unique_id=1959679709]
+[node name="Artist" type="Label" parent="VBoxContainer/Artist" unique_id=1959679709]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.32292885, 0.33971205, 0.38683742, 0.50980395)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 30
 text = "Taylor Swift"
 
 [node name="Line" type="Label" parent="VBoxContainer" unique_id=1721316643]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.24477637, 0.24477643, 0.24477634, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "    Romeo, take me somewhere we can be alone."
 autowrap_mode = 3
 script = ExtResource("5_1i5pp")

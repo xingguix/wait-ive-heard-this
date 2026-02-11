@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://cpk7ld8uah2ka" path="res://scripts/search_control.gd" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://dt2lm3xacdb1m" path="res://resources/加载.svg" id="7_272bh"]
+[ext_resource type="Script" uid="uid://dgiy26hxvmyfd" path="res://scripts/card_control.gd" id="9_kek77"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lquwl"]
 
@@ -93,6 +94,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 
 [node name="Placeholder" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1443505082]
 custom_minimum_size = Vector2(0, 100)
@@ -235,15 +237,16 @@ text = "搜索"
 
 [node name="CardControl" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1617772259]
 layout_mode = 2
+script = ExtResource("9_kek77")
 
 [node name="CardVBox" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=293559114]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -541.0
-offset_right = 541.0
-offset_bottom = 202.0
+offset_left = -681.0
+offset_right = 681.0
+offset_bottom = 680.0
 grow_horizontal = 2
 
 [connection signal="text_submitted" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_text_submitted"]
