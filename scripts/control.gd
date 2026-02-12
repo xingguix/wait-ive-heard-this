@@ -10,7 +10,6 @@ func _ready() -> void:
 	separator_array.clear()
 	await create_tween().tween_interval(0.01).finished
 	var artist_position: float = artist_box.position.y + artist_box.size.y + entire_box.position.y + 1
-	print(artist_box.position.y, artist_box.size.y)
 	separator_array.append(artist_position)
 	
 
