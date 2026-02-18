@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://chlmpbv1vea06"]
+
+[ext_resource type="Script" uid="uid://bs3ychgd26je3" path="res://scripts/line.gd" id="1_084u5"]
+
+[node name="Line" type="Label" unique_id=401124211]
+offset_right = 800.0
+offset_bottom = 98.0
+theme_override_colors/font_color = Color(0.24477637, 0.24477643, 0.24477634, 1)
+theme_override_font_sizes/font_size = 30
+text = "    Romeo, take me somewhere we can be alone."
+autowrap_mode = 3
+script = ExtResource("1_084u5")
+
+[node name="Button" type="Button" parent="." unique_id=311893259]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
