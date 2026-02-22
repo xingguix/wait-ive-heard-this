@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bl8decfsbhyw"]
 
-[ext_resource type="Script" uid="uid://juvwnl8ucm6e" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bhkyjxpjn11px" path="res://scripts/title_h_box_animation.gd" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://0p3huy8pbl4u" path="res://scripts/title_v_box.gd" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://b03tvs7f1n4v0" path="res://scripts/啊.gd" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://dt4ko40owkmrv" path="res://scripts/search_box.gd" id="5_7mycd"]
-[ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://cpk7ld8uah2ka" path="res://scripts/search_control.gd" id="7_5vw27"]
-[ext_resource type="Texture2D" uid="uid://dt2lm3xacdb1m" path="res://resources/加载.svg" id="7_272bh"]
-[ext_resource type="Script" uid="uid://dgiy26hxvmyfd" path="res://scripts/card_control.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://juvwnl8ucm6e" path="res://main_search.gd" id="1_1y4gs"]
+[ext_resource type="Script" uid="uid://0p3huy8pbl4u" path="res://scripts/title_v_box.gd" id="2_tdgwu"]
+[ext_resource type="Script" uid="uid://bhkyjxpjn11px" path="res://scripts/title_h_box_animation.gd" id="3_vgtt7"]
+[ext_resource type="Script" uid="uid://b03tvs7f1n4v0" path="res://scripts/啊.gd" id="4_er7aa"]
+[ext_resource type="Script" uid="uid://dt4ko40owkmrv" path="res://scripts/search_box.gd" id="5_vsx8o"]
+[ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="6_uqcxe"]
+[ext_resource type="Script" uid="uid://cpk7ld8uah2ka" path="res://scripts/search_control.gd" id="7_ofdvj"]
+[ext_resource type="Texture2D" uid="uid://dt2lm3xacdb1m" path="res://resources/加载.svg" id="8_vd0yf"]
+[ext_resource type="Script" uid="uid://dgiy26hxvmyfd" path="res://scripts/card_control.gd" id="9_qn30i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lquwl"]
 
@@ -53,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_1y4gs")
 metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1721560143]
@@ -114,19 +114,19 @@ offset_right = 800.0
 offset_bottom = 195.0
 grow_horizontal = 2
 alignment = 1
-script = ExtResource("2_h2yge")
+script = ExtResource("2_tdgwu")
 
 [node name="TitleHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox" unique_id=1910254666]
 layout_mode = 2
 alignment = 1
-script = ExtResource("2_0xm2m")
+script = ExtResource("3_vgtt7")
 
 [node name="啊" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=634512641]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 96
 text = "啊"
-script = ExtResource("4_1bvp3")
+script = ExtResource("4_er7aa")
 
 [node name="问号Red" type="Label" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/TitleVBox/TitleHBox" unique_id=1333914937]
 layout_mode = 2
@@ -183,7 +183,7 @@ theme_override_colors/caret_color = Color(0.14406246, 0.14406252, 0.14406297, 1)
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_1bvp3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1bvp3")
-script = ExtResource("5_7mycd")
+script = ExtResource("5_vsx8o")
 control = NodePath("../../../..")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" unique_id=1162499073]
@@ -195,7 +195,7 @@ offset_top = 18.0
 offset_right = 139.0
 offset_bottom = -18.0
 grow_vertical = 2
-texture = ExtResource("5_lquwl")
+texture = ExtResource("6_uqcxe")
 expand_mode = 3
 stretch_mode = 5
 
@@ -211,14 +211,14 @@ offset_right = -22.0
 offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 2
-script = ExtResource("7_5vw27")
+script = ExtResource("7_ofdvj")
 
 [node name="Loading" type="TextureRect" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl" unique_id=1820402162]
 layout_mode = 0
 offset_left = 206.0
 offset_right = 300.0
 offset_bottom = 94.0
-texture = ExtResource("7_272bh")
+texture = ExtResource("8_vd0yf")
 expand_mode = 2
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl" unique_id=1062035100]
@@ -237,7 +237,7 @@ text = "搜索"
 
 [node name="CardControl" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1617772259]
 layout_mode = 2
-script = ExtResource("9_kek77")
+script = ExtResource("9_qn30i")
 
 [node name="CardVBox" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=293559114]
 layout_mode = 1
