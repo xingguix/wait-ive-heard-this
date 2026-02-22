@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bs3ychgd26je3" path="res://scripts/line.gd" id="1_084u5"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_084u5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nt5om"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tfru"]
+bg_color = Color(0.6, 0.6, 0.6, 0.14509805)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pudco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xymsq"]
+
 [node name="Line" type="Label" unique_id=401124211]
 offset_right = 800.0
 offset_bottom = 98.0
@@ -12,11 +23,15 @@ autowrap_mode = 3
 script = ExtResource("1_084u5")
 
 [node name="Button" type="Button" parent="." unique_id=311893259]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_084u5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nt5om")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7tfru")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pudco")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xymsq")
 metadata/_edit_lock_ = true

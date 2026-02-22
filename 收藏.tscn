@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ckgrfy1nmv3ro"]
+
+[ext_resource type="Script" uid="uid://bhpb6n634iswn" path="res://scripts/收藏.gd" id="1_d55w5"]
+[ext_resource type="Texture2D" uid="uid://d2wvm0f2wx5wo" path="res://resources/空收藏提示.svg" id="1_piueo"]
+[ext_resource type="Texture2D" uid="uid://cn4wkbjypcdxh" path="res://resources/未收藏.svg" id="3_02fna"]
+[ext_resource type="Texture2D" uid="uid://c8qb6yimfsijb" path="res://resources/小播放.svg" id="4_628oi"]
+
+[node name="收藏" type="Control" unique_id=707908111]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d55w5")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1384468481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.98039216, 0.9764706, 0.9647059, 1)
+metadata/_edit_lock_ = true
+
+[node name="空提示" type="Control" parent="." unique_id=1102119475]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -249.0
+offset_top = 266.0
+offset_right = 249.0
+offset_bottom = 788.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="空提示" unique_id=786120467]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 103.0
+offset_right = -85.0
+offset_bottom = 316.2249
+grow_horizontal = 2
+texture = ExtResource("1_piueo")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="空提示" unique_id=130351147]
+modulate = Color(0.32172796, 0.32172796, 0.32172796, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "你还没有收藏的歌词!
+快去收藏一条吧!
+(双击歌词可打开菜单)"
+horizontal_alignment = 1
+
+[node name="DoubleClickTimer" type="Timer" parent="." unique_id=1497710764]
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=1261546152]
+oversampling_override = 1.0
+size = Vector2i(574, 285)
+theme_override_font_sizes/font_size = 50
+item_count = 2
+item_0/text = "收藏"
+item_0/icon = ExtResource("3_02fna")
+item_0/id = 0
+item_1/text = "用其他软件播放"
+item_1/icon = ExtResource("4_628oi")
+item_1/id = 1

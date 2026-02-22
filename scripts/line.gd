@@ -1,7 +1,7 @@
 class_name LineLabel extends Label
 
-signal on_line_pressed(line_id: int)
-signal on_line_double_pressed(line_id: int)
+signal line_pressed(line_id: int)
+signal line_double_pressed(line_id: int)
 
 @onready var button = $Button
 var line_id: int = -1
@@ -23,6 +23,7 @@ func _ready():
 func _on_button_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if event.double_click:
-			emit_signal("on_line_double_pressed", line_id)
+			emit_signal("line_double_pressed", line_id)
 		else:
-			emit_signal("on_line_pressed", line_id)
+			emit_signal("line_pressed", line_id)
+	

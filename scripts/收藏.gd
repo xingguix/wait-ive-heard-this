@@ -1,24 +1,8 @@
-class_name CardControl extends Control
+extends Control
 
-@onready var card_box: VBoxContainer = $CardVBox
 @export var player: AudioStreamPlayer
 @onready var double_click_timer: Timer = $DoubleClickTimer
 @onready var menu: PopupMenu = $PopupMenu
-@onready var grand_parent: Control = $"../../.."
-
-
-func add_card(card: Card):
-	# TODO 特效
-	card_box.add_child(card)
-	
-func clear() -> void:
-	for i in card_box.get_children():
-		# TODO 特效
-		i.queue_free()
-
-func _process(_delta: float) -> void:
-	self.custom_minimum_size = card_box.get_minimum_size()
-
 
 class Song:
 	var title: String
@@ -35,15 +19,18 @@ var recently_double_clicked: bool = false:
 			recently_double_clicked = false
 			double_click_timer.stop()
 
-func play_player(audio: AudioStream):
+func play_player():
 	if recently_double_clicked:
 		return
-	grand_parent.play_player(audio)
+	player.play()
 
 
 
 func resolve_search_result(result: Array):
-	clear()
+	#for i in result:
+		#var card = Card.new_card(i["title"], i["artist"], i["line"], i["line_id"], i["start_time"], i["end_time"])
+		#card_control.add_card(card)
+		#card.request_line_ogg.connect(request_and_play_line_ogg)
 	var song_and_card: Dictionary[Song, Card]
 	for i in result:
 		var song_card_existed: bool = false
@@ -72,10 +59,21 @@ func request_and_play_line_ogg(line_id: int):
 	var result = await Connector.request_completed
 	if result is not AudioStreamOggVorbis:
 		return
-	if not recently_double_clicked:
-		play_player(result)
+	player.stream = result
+	play_player()
 
 func _on_line_double_clicked(line_id: int):
 	recently_double_clicked = true
 	menu.popup()
 	menu.position = get_global_mouse_position()
+
+func add_card(card: Card):
+	pass
+
+
+func refresh():
+	pass
+
+
+func _on_changed():
+	pass

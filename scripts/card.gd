@@ -14,6 +14,7 @@ static var line_file = preload("res://line.tscn")
 @export var end_times: Array[int] # 太乱了 有时间改成数据class
 
 signal request_line_ogg(_line_id: int)
+signal line_double_pressed(line_id: int)
 
 func _process(_delta: float) -> void:
 	var new_minimize_size_y: float = 0.
@@ -27,7 +28,8 @@ func _process(_delta: float) -> void:
 	if len(line_labels) < len(lines):
 		for _i in range(len(lines)-len(line_labels)):
 			var new_line: LineLabel = line_file.instantiate()
-			new_line.on_line_pressed.connect(_on_line_pressed)
+			new_line.line_pressed.connect(_on_line_pressed)
+			new_line.line_double_pressed.connect(_on_line_double_pressed)
 			line_container.add_child(new_line)
 			line_labels.append(new_line)
 			
@@ -57,3 +59,6 @@ static func new_card(new_title: String, new_artist: String, new_line: String, ne
 
 func _on_line_pressed(line_id: int) -> void:
 	emit_signal("request_line_ogg", line_id)
+
+func _on_line_double_pressed(line_id: int) -> void:
+	emit_signal("line_double_pressed", line_id)

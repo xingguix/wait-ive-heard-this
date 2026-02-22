@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bw3c77ib4ug2e" path="res://tab.tscn" id="1_htfve"]
 [ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="2_l8dkr"]
 [ext_resource type="Script" uid="uid://wvulggcxyhqs" path="res://scripts/tab_manager.gd" id="2_w8com"]
+[ext_resource type="PackedScene" uid="uid://ckgrfy1nmv3ro" path="res://收藏.tscn" id="3_jvvl1"]
+[ext_resource type="Texture2D" uid="uid://cn4wkbjypcdxh" path="res://resources/未收藏.svg" id="7_eb2ri"]
 
 [node name="MainTab" type="Control" unique_id=1679429937]
 layout_mode = 3
@@ -14,6 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_31pa5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1930306486]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1902593727]
 layout_mode = 1
@@ -26,9 +30,14 @@ grow_vertical = 2
 [node name="MainSceneControl" type="Control" parent="VBoxContainer" unique_id=2016242797]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 8.02
+size_flags_stretch_ratio = 9.59
 
-[node name="Control" parent="VBoxContainer/MainSceneControl" unique_id=661203023 instance=ExtResource("1_8yunk")]
+[node name="Control" parent="VBoxContainer/MainSceneControl" unique_id=661203023 node_paths=PackedStringArray("player") instance=ExtResource("1_8yunk")]
+layout_mode = 1
+player = NodePath("../../../AudioStreamPlayer")
+
+[node name="收藏" parent="VBoxContainer/MainSceneControl" unique_id=707908111 instance=ExtResource("3_jvvl1")]
+visible = false
 layout_mode = 1
 
 [node name="TabPanel" type="Panel" parent="VBoxContainer" unique_id=813748071]
@@ -63,6 +72,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 tab_id = 1
 tab_name = "生词本"
+tab_texture = ExtResource("7_eb2ri")
 
 [node name="Tab3" parent="VBoxContainer/TabPanel/TabManager" unique_id=1511758211 instance=ExtResource("1_htfve")]
 layout_mode = 2

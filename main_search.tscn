@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://cpk7ld8uah2ka" path="res://scripts/search_control.gd" id="7_ofdvj"]
 [ext_resource type="Texture2D" uid="uid://dt2lm3xacdb1m" path="res://resources/加载.svg" id="8_vd0yf"]
 [ext_resource type="Script" uid="uid://dgiy26hxvmyfd" path="res://scripts/card_control.gd" id="9_qn30i"]
+[ext_resource type="Texture2D" uid="uid://cn4wkbjypcdxh" path="res://resources/未收藏.svg" id="10_tdgwu"]
+[ext_resource type="Texture2D" uid="uid://c8qb6yimfsijb" path="res://resources/小播放.svg" id="11_vgtt7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lquwl"]
 
@@ -56,7 +58,9 @@ grow_vertical = 2
 script = ExtResource("1_1y4gs")
 metadata/_edit_lock_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1721560143]
+[node name="DoubleClickTimer" type="Timer" parent="." unique_id=469999414]
+wait_time = 1.5
+one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1494681420]
 layout_mode = 1
@@ -248,6 +252,32 @@ offset_left = -3.0000916
 offset_right = 2.999939
 offset_bottom = 680.0
 grow_horizontal = 2
+
+[node name="DoubleClickTimer" type="Timer" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=404977789]
+
+[node name="PopupMenu" type="PopupMenu" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=1644388756]
+oversampling_override = 1.0
+size = Vector2i(574, 285)
+theme_override_font_sizes/font_size = 50
+item_count = 2
+item_0/text = "收藏"
+item_0/icon = ExtResource("10_tdgwu")
+item_0/id = 0
+item_1/text = "用其他软件播放"
+item_1/icon = ExtResource("11_vgtt7")
+item_1/id = 1
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=1432379317]
+oversampling_override = 1.0
+size = Vector2i(574, 285)
+theme_override_font_sizes/font_size = 50
+item_count = 2
+item_0/text = "收藏"
+item_0/icon = ExtResource("10_tdgwu")
+item_0/id = 0
+item_1/text = "用其他软件播放"
+item_1/icon = ExtResource("11_vgtt7")
+item_1/id = 1
 
 [connection signal="text_submitted" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_text_submitted"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl/Button" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_button_pressed"]
