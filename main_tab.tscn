@@ -23,7 +23,7 @@ grow_vertical = 2
 [node name="MainSceneControl" type="Control" parent="VBoxContainer" unique_id=2016242797]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.5
+size_flags_stretch_ratio = 6.52
 
 [node name="Control" parent="VBoxContainer/MainSceneControl" unique_id=661203023 instance=ExtResource("1_8yunk")]
 layout_mode = 1
