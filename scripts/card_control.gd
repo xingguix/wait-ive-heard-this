@@ -1,10 +1,21 @@
 class_name CardControl extends Control
 
 @onready var card_box: VBoxContainer = $CardVBox
-@export var player: AudioStreamPlayer
 @onready var double_click_timer: Timer = $DoubleClickTimer
 @onready var menu: PopupMenu = $PopupMenu
-@onready var grand_parent: Control = $"../../.."
+@export var grand_parent: Control
+@export_multiline() var empty_result_text: String = ""
+@onready var empty_tip: Control = $空提示
+var unstar_texture: Texture2D = preload("res://resources/未收藏.svg")
+var star_texture: Texture2D = preload("res://resources/已收藏.svg")
+
+var popup_line_id: int = -1
+var popup_search_word: String = ""
+var recently_double_clicked: bool = false
+
+class Song:
+	var title: String
+	var artist: String
 
 
 func add_card(card: Card):
@@ -19,31 +30,19 @@ func clear() -> void:
 func _process(_delta: float) -> void:
 	self.custom_minimum_size = card_box.get_minimum_size()
 
-
-class Song:
-	var title: String
-	var artist: String
-
-var recently_double_clicked: bool = false:
-	set(new_value):
-		if new_value == true:
-			recently_double_clicked = true
-			double_click_timer.start()
-			await double_click_timer.timeout
-			recently_double_clicked = false
-		else:
-			recently_double_clicked = false
-			double_click_timer.stop()
-
 func play_player(audio: AudioStream):
-	if recently_double_clicked:
-		return
 	grand_parent.play_player(audio)
 
 
 
 func resolve_search_result(result: Array):
 	clear()
+	if result.is_empty():
+		$"空提示/Label".text = empty_result_text
+		empty_tip.show()
+		return
+	else:
+		empty_tip.hide()
 	var song_and_card: Dictionary[Song, Card]
 	for i in result:
 		var song_card_existed: bool = false
@@ -74,8 +73,31 @@ func request_and_play_line_ogg(line_id: int):
 		return
 	if not recently_double_clicked:
 		play_player(result)
-
+	else:
+		recently_double_clicked = false
+		
 func _on_line_double_clicked(line_id: int):
 	recently_double_clicked = true
+	
+	if FavoriteManager.has(line_id):
+		menu.set_item_text(0, "取消收藏")
+		menu.set_item_icon(0, star_texture)
+	else:
+		menu.set_item_text(0, "收藏")
+		menu.set_item_icon(0, unstar_texture)
 	menu.popup()
 	menu.position = get_global_mouse_position()
+	popup_line_id = line_id
+	
+func _on_popup_menu_id_pressed(id: int) -> void:
+	match id:
+		0:
+			if FavoriteManager.has(popup_line_id):
+				FavoriteManager.erase(popup_line_id)
+			else:
+				var stared_line = FavoriteManager.StaredLine.new()
+				stared_line.line_id = popup_line_id
+				FavoriteManager.favorites.append(stared_line)
+				FavoriteManager.write_favorites()
+			
+			

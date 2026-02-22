@@ -7,11 +7,13 @@ var http_client: HTTPClient = null
 enum Status {
 	IDLE,
 	SEARCH_WORD,
-	GET_LINE_OGG
+	GET_LINE_OGG,
+	GET_LINES
 }
 
 var word: String = ""
 var line_id: int = 0
+var line_ids: Array[int] = []
 var current_status: Status = Status.IDLE
 var body_buffer := PackedByteArray()
 
@@ -30,11 +32,17 @@ func _process(_delta: float) -> void:
 	match http_client.get_status():
 		HTTPClient.STATUS_CONNECTED:
 			var error
+			var headers := PackedStringArray()
+			
 			match current_status:
 				Status.SEARCH_WORD:
 					error = http_client.request(HTTPClient.METHOD_GET, "/search/" + word, [])
 				Status.GET_LINE_OGG:
 					error = http_client.request(HTTPClient.METHOD_GET, "/get_line_ogg/" + str(line_id), [])
+				Status.GET_LINES:
+					headers.append("Content-Type: application/json")
+					var body = JSON.stringify({"line_ids": line_ids})
+					error = http_client.request(HTTPClient.METHOD_POST, "/get_lines", headers, body)
 				_:
 					error = OK
 			if error != OK:
@@ -64,7 +72,7 @@ func _process(_delta: float) -> void:
 			# 数据收完整了
 			var result
 			match current_status:
-				Status.SEARCH_WORD:
+				Status.SEARCH_WORD, Status.GET_LINES:
 					result = JSON.parse_string(body_buffer.get_string_from_utf8())
 				Status.GET_LINE_OGG:
 					result = AudioStreamOggVorbis.load_from_buffer(body_buffer)
@@ -101,6 +109,12 @@ func get_line_ogg(new_line_id: int):
 	await _wait_idle()
 	line_id = new_line_id
 	current_status = Status.GET_LINE_OGG
+	_create_client()
+
+func get_lines(new_line_ids: Array[int]):
+	await _wait_idle()
+	line_ids = new_line_ids
+	current_status = Status.GET_LINES
 	_create_client()
 
 # 等待上一个请求完成

@@ -8,9 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="6_uqcxe"]
 [ext_resource type="Script" uid="uid://cpk7ld8uah2ka" path="res://scripts/search_control.gd" id="7_ofdvj"]
 [ext_resource type="Texture2D" uid="uid://dt2lm3xacdb1m" path="res://resources/加载.svg" id="8_vd0yf"]
-[ext_resource type="Script" uid="uid://dgiy26hxvmyfd" path="res://scripts/card_control.gd" id="9_qn30i"]
-[ext_resource type="Texture2D" uid="uid://cn4wkbjypcdxh" path="res://resources/未收藏.svg" id="10_tdgwu"]
-[ext_resource type="Texture2D" uid="uid://c8qb6yimfsijb" path="res://resources/小播放.svg" id="11_vgtt7"]
+[ext_resource type="PackedScene" uid="uid://crrmnb6lo63y4" path="res://card_control.tscn" id="9_vgtt7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lquwl"]
 
@@ -239,45 +237,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
 text = "搜索"
 
-[node name="CardControl" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1617772259]
+[node name="CardControl" parent="ScrollContainer/VBoxContainer" unique_id=298617032 node_paths=PackedStringArray("grand_parent") instance=ExtResource("9_vgtt7")]
 layout_mode = 2
-script = ExtResource("9_qn30i")
-
-[node name="CardVBox" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=293559114]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.074
-anchor_right = 0.92600006
-offset_left = -3.0000916
-offset_right = 2.999939
-offset_bottom = 680.0
-grow_horizontal = 2
-
-[node name="DoubleClickTimer" type="Timer" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=404977789]
-
-[node name="PopupMenu" type="PopupMenu" parent="ScrollContainer/VBoxContainer/CardControl" unique_id=1644388756]
-oversampling_override = 1.0
-size = Vector2i(574, 285)
-theme_override_font_sizes/font_size = 50
-item_count = 2
-item_0/text = "收藏"
-item_0/icon = ExtResource("10_tdgwu")
-item_0/id = 0
-item_1/text = "用其他软件播放"
-item_1/icon = ExtResource("11_vgtt7")
-item_1/id = 1
-
-[node name="PopupMenu" type="PopupMenu" parent="." unique_id=1432379317]
-oversampling_override = 1.0
-size = Vector2i(574, 285)
-theme_override_font_sizes/font_size = 50
-item_count = 2
-item_0/text = "收藏"
-item_0/icon = ExtResource("10_tdgwu")
-item_0/id = 0
-item_1/text = "用其他软件播放"
-item_1/icon = ExtResource("11_vgtt7")
-item_1/id = 1
+grand_parent = NodePath("../../..")
 
 [connection signal="text_submitted" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_text_submitted"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox/SearchControl/Button" to="ScrollContainer/VBoxContainer/TitleAndSearchBox/SearchBox" method="_on_button_pressed"]

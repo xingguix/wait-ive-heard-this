@@ -13,7 +13,7 @@ func change_to_id(id: int) -> void:
 		if i == id:
 			children[i].show()
 			if children[i].has_method("_on_changed"):
-				children[i].on_changed()
+				children[i]._on_changed()
 		else:
 			children[i].hide()
 	

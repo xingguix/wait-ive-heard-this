@@ -24,6 +24,8 @@ func _on_button_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if event.double_click:
 			emit_signal("line_double_pressed", line_id)
+			button.hide()
+			button.show()
 		else:
 			emit_signal("line_pressed", line_id)
 	

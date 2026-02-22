@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://crrmnb6lo63y4"]
+
+[ext_resource type="Script" uid="uid://dgiy26hxvmyfd" path="res://scripts/card_control.gd" id="1_4nmev"]
+[ext_resource type="Texture2D" uid="uid://cn4wkbjypcdxh" path="res://resources/未收藏.svg" id="2_80r6k"]
+[ext_resource type="Texture2D" uid="uid://c8qb6yimfsijb" path="res://resources/小播放.svg" id="3_3y0ey"]
+[ext_resource type="Texture2D" uid="uid://lglsxta43lrk" path="res://resources/Empty box.svg" id="4_80r6k"]
+
+[node name="CardControl" type="Control" unique_id=298617032]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 737.0
+grow_horizontal = 2
+script = ExtResource("1_4nmev")
+empty_result_text = "搜索结果是空的!
+试试换一个词或添加点歌曲吧!"
+
+[node name="CardVBox" type="VBoxContainer" parent="." unique_id=1001444267]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.074
+anchor_right = 0.92600006
+offset_left = -3.0000916
+offset_right = 2.999939
+offset_bottom = 680.0
+grow_horizontal = 2
+
+[node name="DoubleClickTimer" type="Timer" parent="." unique_id=62414205]
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=442940305]
+oversampling_override = 1.0
+size = Vector2i(574, 285)
+theme_override_font_sizes/font_size = 50
+item_count = 2
+item_0/text = "收藏"
+item_0/icon = ExtResource("2_80r6k")
+item_0/id = 0
+item_1/text = "用其他软件播放"
+item_1/icon = ExtResource("3_3y0ey")
+item_1/id = 1
+
+[node name="空提示" type="Control" parent="." unique_id=316273687]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -249.0
+offset_top = 50.0
+offset_right = 249.0
+offset_bottom = 572.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="空提示" unique_id=793901394]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 87.0
+offset_right = -101.0
+offset_bottom = 316.2249
+grow_horizontal = 2
+texture = ExtResource("4_80r6k")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="空提示" unique_id=768790692]
+modulate = Color(0.32172796, 0.32172796, 0.32172796, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -191.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "搜索结果是空的!"
+horizontal_alignment = 1
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_popup_menu_id_pressed"]

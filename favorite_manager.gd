@@ -6,7 +6,7 @@ class StaredLine:
 var favorites: Array[StaredLine]
 var favorites_file_path: String = "user://favorites.txt" # 一行一个line_id
 
-
+signal favorite_changed
 
 func load_favorites() -> void:
 	var file: FileAccess = FileAccess.open(favorites_file_path, FileAccess.READ)
@@ -22,6 +22,23 @@ func load_favorites() -> void:
 		stared_line.line_id = int(csv_row[0])
 		favorites.append(stared_line)
 	file.close()
+
+func has(id: int):
+	for i in favorites:
+		if i.line_id == id:
+			return true	
+	return false
+
+func erase(id: int):
+	var target: StaredLine = null
+	for i in favorites:
+		if i.line_id == id:
+			target = i
+			break
+	if not target:
+		return
+	favorites.erase(target)
+	emit_signal("favorite_changed")
 
 func write_favorites() -> void:
 	var file: FileAccess = FileAccess.open(favorites_file_path, FileAccess.WRITE)
