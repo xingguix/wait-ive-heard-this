@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bvksuytiim5o8"]
 
+[ext_resource type="PackedScene" uid="uid://bl8decfsbhyw" path="res://main_search.tscn" id="1_8yunk"]
 [ext_resource type="PackedScene" uid="uid://bw3c77ib4ug2e" path="res://tab.tscn" id="1_htfve"]
 [ext_resource type="Texture2D" uid="uid://cyph6mjinq3a8" path="res://resources/search.svg" id="2_l8dkr"]
 
@@ -11,17 +12,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabPanel" type="Panel" parent="." unique_id=813748071]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1902593727]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.94600004
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -119.00006
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabPanel" unique_id=1485680925]
+[node name="MainSceneControl" type="Control" parent="VBoxContainer" unique_id=2016242797]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.5
+
+[node name="Control" parent="VBoxContainer/MainSceneControl" unique_id=661203023 instance=ExtResource("1_8yunk")]
+layout_mode = 1
+
+[node name="TabPanel" type="Panel" parent="VBoxContainer" unique_id=813748071]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabPanel" unique_id=1485680925]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.020000009
@@ -35,18 +46,18 @@ theme_override_constants/separation = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Tab" parent="TabPanel/HBoxContainer" unique_id=1131979985 instance=ExtResource("1_htfve")]
+[node name="Tab" parent="VBoxContainer/TabPanel/HBoxContainer" unique_id=1131979985 instance=ExtResource("1_htfve")]
 layout_mode = 2
 size_flags_horizontal = 3
 tab_name = "搜索"
 tab_texture = ExtResource("2_l8dkr")
 
-[node name="Tab2" parent="TabPanel/HBoxContainer" unique_id=394985030 instance=ExtResource("1_htfve")]
+[node name="Tab2" parent="VBoxContainer/TabPanel/HBoxContainer" unique_id=394985030 instance=ExtResource("1_htfve")]
 layout_mode = 2
 size_flags_horizontal = 3
 tab_name = "生词本"
 
-[node name="Tab3" parent="TabPanel/HBoxContainer" unique_id=1511758211 instance=ExtResource("1_htfve")]
+[node name="Tab3" parent="VBoxContainer/TabPanel/HBoxContainer" unique_id=1511758211 instance=ExtResource("1_htfve")]
 layout_mode = 2
 size_flags_horizontal = 3
 tab_name = "设置"
