@@ -25,6 +25,11 @@ FavoriteManager="*uid://copmvgvrmtt7w"
 
 window/size/viewport_width=1000
 window/size/viewport_height=1400
+window/handheld/orientation=5
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 

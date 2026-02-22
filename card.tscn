@@ -26,6 +26,7 @@ offset_left = -416.0
 offset_right = 416.0
 offset_bottom = 250.0
 grow_horizontal = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_rjlel")
 script = ExtResource("1_kikvd")
 
@@ -36,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("2_rjlel")
 separator_array = Array[float]([114.0])
 line_height = 1.5
@@ -61,6 +63,7 @@ layout_mode = 2
 [node name="Control" type="Control" parent="VBoxContainer/SongName" unique_id=1539974902]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/SongName/Control" unique_id=1493621220]
 self_modulate = Color(1, 1, 1, 0.59607846)
@@ -74,6 +77,7 @@ stretch_mode = 5
 
 [node name="Song" type="Label" parent="VBoxContainer/SongName" unique_id=1862060507]
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Love Story"
@@ -84,6 +88,7 @@ layout_mode = 2
 [node name="Control" type="Control" parent="VBoxContainer/Artist" unique_id=1210124649]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Artist/Control" unique_id=984476392]
 self_modulate = Color(1, 1, 1, 0.5529412)
@@ -97,6 +102,7 @@ stretch_mode = 5
 
 [node name="Artist" type="Label" parent="VBoxContainer/Artist" unique_id=1959679709]
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.32292885, 0.33971205, 0.38683742, 0.50980395)
 theme_override_font_sizes/font_size = 30
 text = "Taylor Swift"
