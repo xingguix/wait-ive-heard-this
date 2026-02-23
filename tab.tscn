@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bw3c77ib4ug2e"]
 
 [ext_resource type="Script" uid="uid://coref7t2s56bn" path="res://scripts/tab.gd" id="1_70i6g"]
-[ext_resource type="Texture2D" uid="uid://ci0sula4hhyhx" path="res://icon.svg" id="1_kab8h"]
+[ext_resource type="Texture2D" uid="uid://iv0sv17oun6w" path="res://icon.png" id="2_70i6g"]
 
 [node name="Button" type="Button" unique_id=328447388]
 self_modulate = Color(1, 1, 1, 0)
@@ -17,7 +17,6 @@ offset_bottom = 60.757324
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_70i6g")
-tab_id = null
 
 [node name="Tab" type="VBoxContainer" parent="." unique_id=1131979985]
 layout_mode = 1
@@ -35,7 +34,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Tab" unique_id=632221448]
 layout_mode = 2
-texture = ExtResource("1_kab8h")
+texture = ExtResource("2_70i6g")
 expand_mode = 4
 stretch_mode = 5
 

@@ -13,13 +13,15 @@ config_version=5
 config/name="Wait Ive heard this"
 run/main_scene="uid://bvksuytiim5o8"
 config/features=PackedStringArray("4.6", "Mobile")
-boot_splash/bg_color=Color(0.9607843, 0.9607843, 0.9411765, 1)
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="uid://iv0sv17oun6w"
+config/icon="uid://iv0sv17oun6w"
 
 [autoload]
 
 Connector="*uid://ct4pv1wy3ydud"
 FavoriteManager="*uid://copmvgvrmtt7w"
+Settings="*uid://cx3dvx727cqlw"
 
 [display]
 

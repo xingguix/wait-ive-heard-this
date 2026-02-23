@@ -17,6 +17,10 @@ func play_player(audio: AudioStream):
 
 
 func search_and_add(word: String):
+	for char_ in word:
+		if not (char_ >= 'a' and char_ <= 'z') and not (char_ >= 'A' and char_ <= 'Z'):
+			card_control.resolve_search_result([])
+			return
 	searched_word = word
 	Connector.search_word(word)
 	var result = await Connector.request_completed

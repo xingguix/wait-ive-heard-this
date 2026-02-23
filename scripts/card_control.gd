@@ -11,6 +11,7 @@ var star_texture: Texture2D = preload("res://resources/已收藏.svg")
 
 var popup_line_id: int = -1
 var popup_search_word: String = ""
+var popup_song: Song
 var recently_double_clicked: bool = false
 
 class Song:
@@ -99,5 +100,13 @@ func _on_popup_menu_id_pressed(id: int) -> void:
 				stared_line.line_id = popup_line_id
 				FavoriteManager.favorites.append(stared_line)
 				FavoriteManager.write_favorites()
-			
-			
+		1:
+			# 我们来梳理一下思路: 首先要整一个api, 用于获取网易云歌曲id, 这个可以放在客户端里吧?
+			# 然后, 我们只需获取, 之后OS.shell_open("orpheus://song/{得到的}?startTime={startTime}")即可!
+			Connector.get_lines([popup_line_id])
+			var line_data: Array[Dictionary] = await Connector.request_completed
+			var keyword: String = line_data[0]["title"] + " " + line_data[0]["artist"]
+			Connector.search_netease_song(keyword)
+			var search_result: Dictionary = await Connector.request_completed
+			var song_id: String = search_result["songs"][0]["id"]
+			print(song_id)

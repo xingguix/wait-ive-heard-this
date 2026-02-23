@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cwwoursdwxn6l"]
 
 [ext_resource type="Script" uid="uid://coqn1wi52grtq" path="res://scripts/card.gd" id="1_kikvd"]
-[ext_resource type="Script" uid="uid://cyqsyudsw24d2" path="res://scripts/control.gd" id="2_rjlel"]
 [ext_resource type="Texture2D" uid="uid://cuyn83y5170fl" path="res://resources/音乐.svg" id="3_q5obu"]
 [ext_resource type="Texture2D" uid="uid://dns06db1p66fm" path="res://resources/歌手.svg" id="4_e484p"]
 
@@ -29,21 +28,6 @@ grow_horizontal = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_rjlel")
 script = ExtResource("1_kikvd")
-
-[node name="SeparatorManager" type="Control" parent="." unique_id=93855079 node_paths=PackedStringArray("artist_box", "entire_box")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("2_rjlel")
-separator_array = Array[float]([114.0])
-line_height = 1.5
-artist_box = NodePath("../VBoxContainer/Artist")
-entire_box = NodePath("../VBoxContainer")
-metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=616429392]
 layout_mode = 1

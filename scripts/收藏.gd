@@ -1,9 +1,10 @@
 extends Control
 
 @export var player: AudioStreamPlayer
-@onready var card_control: CardControl = $ScrollContainer/CardControl
+@onready var card_control: CardControl = $ScrollContainer/VBoxContainer/CardControl
 
 func _ready() -> void:
+	card_control.resolve_search_result([])
 	FavoriteManager.favorite_changed.connect(_on_changed)
 
 func play_player(audio: AudioStream):

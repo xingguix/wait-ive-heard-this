@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://wvulggcxyhqs" path="res://scripts/tab_manager.gd" id="2_w8com"]
 [ext_resource type="PackedScene" uid="uid://ckgrfy1nmv3ro" path="res://收藏.tscn" id="3_jvvl1"]
 [ext_resource type="Texture2D" uid="uid://cn4wkbjypcdxh" path="res://resources/未收藏.svg" id="7_eb2ri"]
+[ext_resource type="Texture2D" uid="uid://buflqmexaxi6v" path="res://resources/设置.svg" id="8_ltwbw"]
 
 [node name="MainTab" type="Control" unique_id=1679429937]
 layout_mode = 3
@@ -64,7 +65,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Tab1" parent="VBoxContainer/TabPanel/TabManager" unique_id=1131979985 instance=ExtResource("1_htfve")]
 layout_mode = 2
 size_flags_horizontal = 3
-tab_id = 0
 tab_name = "搜索"
 tab_texture = ExtResource("2_l8dkr")
 
@@ -79,6 +79,7 @@ tab_texture = ExtResource("7_eb2ri")
 layout_mode = 2
 size_flags_horizontal = 3
 tab_id = 2
-tab_name = "设置"
+tab_name = "没做"
+tab_texture = ExtResource("8_ltwbw")
 
 [connection signal="child_entered_tree" from="VBoxContainer/TabPanel/TabManager" to="VBoxContainer/TabPanel/TabManager" method="_on_child_entered_tree"]
