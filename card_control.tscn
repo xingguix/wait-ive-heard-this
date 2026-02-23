@@ -26,8 +26,6 @@ offset_right = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DoubleClickTimer" type="Timer" parent="." unique_id=62414205]
-
 [node name="PopupMenu" type="PopupMenu" parent="." unique_id=442940305]
 oversampling_override = 1.0
 size = Vector2i(574, 285)

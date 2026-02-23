@@ -29,9 +29,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_084u5")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_nt5om")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7tfru")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_pudco")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xymsq")
 metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1088790226]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,18 +1,16 @@
 class_name CardControl extends Control
 
 @onready var card_box: VBoxContainer = $CardVBox
-@onready var double_click_timer: Timer = $DoubleClickTimer
 @onready var menu: PopupMenu = $PopupMenu
 @export var grand_parent: Control
 @export_multiline() var empty_result_text: String = ""
 @onready var empty_tip: Control = $空提示
+
 var unstar_texture: Texture2D = preload("res://resources/未收藏.svg")
 var star_texture: Texture2D = preload("res://resources/已收藏.svg")
-
 var popup_line_id: int = -1
 var popup_search_word: String = ""
 var popup_song: Song
-var recently_double_clicked: bool = false
 
 class Song:
 	var title: String
@@ -60,7 +58,7 @@ func resolve_search_result(result: Array):
 		# 否则就是没有相应的卡片, 直接添加:
 		var card = Card.new_card(i["title"], i["artist"], i["line"], i["line_id"], i["start_time"], i["end_time"])
 		card.request_line_ogg.connect(request_and_play_line_ogg)
-		card.line_double_pressed.connect(_on_line_double_clicked)
+		card.line_held.connect(_on_line_held)
 		add_card(card)
 		var song: Song = Song.new()
 		song.title = card.title
@@ -72,14 +70,9 @@ func request_and_play_line_ogg(line_id: int):
 	var result = await Connector.request_completed
 	if result is not AudioStreamOggVorbis:
 		return
-	if not recently_double_clicked:
-		play_player(result)
-	else:
-		recently_double_clicked = false
+	play_player(result)
 		
-func _on_line_double_clicked(line_id: int):
-	recently_double_clicked = true
-	
+func _on_line_held(line_id: int):
 	if FavoriteManager.has(line_id):
 		menu.set_item_text(0, "取消收藏")
 		menu.set_item_icon(0, star_texture)
@@ -104,9 +97,10 @@ func _on_popup_menu_id_pressed(id: int) -> void:
 			# 我们来梳理一下思路: 首先要整一个api, 用于获取网易云歌曲id, 这个可以放在客户端里吧?
 			# 然后, 我们只需获取, 之后OS.shell_open("orpheus://song/{得到的}?startTime={startTime}")即可!
 			Connector.get_lines([popup_line_id])
-			var line_data: Array[Dictionary] = await Connector.request_completed
+			var line_data: Array = await Connector.request_completed
 			var keyword: String = line_data[0]["title"] + " " + line_data[0]["artist"]
+			var start_time: float = line_data[0]["start_time"]
 			Connector.search_netease_song(keyword)
 			var search_result: Dictionary = await Connector.request_completed
-			var song_id: String = search_result["songs"][0]["id"]
-			print(song_id)
+			var song_id: int = int(search_result["songs"][0]["id"])
+			OS.shell_open("orpheus://song/%s?startTime=%s" % [song_id, int(start_time*1000)])

@@ -1,9 +1,10 @@
 class_name LineLabel extends Label
 
 signal line_pressed(line_id: int)
-signal line_double_pressed(line_id: int)
+signal line_held(line_id: int)
 
 @onready var button = $Button
+@onready var timer: Timer = $Timer
 var line_id: int = -1
 var start_time: float
 var end_time: float
@@ -21,11 +22,19 @@ func _ready():
 	button.gui_input.connect(_on_button_gui_input)
 
 func _on_button_gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if event.double_click:
-			emit_signal("line_double_pressed", line_id)
-			button.hide()
-			button.show()
-		else:
-			emit_signal("line_pressed", line_id)
-	
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed == false:
+			if timer.time_left > 0:
+				emit_signal("line_pressed", line_id)
+				timer.stop()
+		else: 
+			timer.start()
+	elif event is InputEventScreenDrag:
+		button.hide()
+		button.show()
+		timer.stop()
+
+func _on_timer_timeout() -> void:
+	button.hide()
+	button.show()
+	emit_signal("line_held", line_id)

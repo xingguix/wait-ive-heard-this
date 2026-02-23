@@ -118,12 +118,14 @@ func _create_client():
 	# 如果是网易云搜索，连接到 music.163.com，否则连接本地服务器
 	var ip = SERVER_IP
 	var port = SERVER_PORT
+	var tls_options = null
+	
 	if current_status == Status.SEARCH_NETEASE_SONG:
 		ip = "music.163.com"
 		port = 443  # HTTPS
-		http_client.set_tls_options(TLSOptions.client())
+		tls_options = TLSOptions.client()  # 创建 TLS 配置对象
 	
-	var err = http_client.connect_to_host(ip, port)
+	var err = http_client.connect_to_host(ip, port, tls_options)
 	if err != OK:
 		push_error("连接失败: " + str(err))
 		http_client = null
